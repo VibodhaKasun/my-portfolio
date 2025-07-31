@@ -7,14 +7,16 @@ import {
   ClipboardCheckIcon,
 } from 'lucide-react'
 import AnimatedText from './AnimatedText'
+
 interface EducationProps {
   darkMode: boolean
 }
+
 const Education = ({ darkMode }: EducationProps) => {
   const educationData = [
     {
       institution: 'University of Westminster - London, UK',
-      degree: 'BSc in Computer Science - Undergraduate',
+      degree: 'BSc (Hons) Computer Science - Undergraduate',
       duration: '2023 - Present',
       icon: (
         <GraduationCapIcon
@@ -37,7 +39,7 @@ const Education = ({ darkMode }: EducationProps) => {
     {
       institution: 'OKI International School - Wattala, Gampaha',
       degree: "G.C.E. Ordinary Level Examination - 2018 | 5 C's and 3B's",
-      duration: '2007 - 2018',
+      duration: '2016 - 2018',
       icon: (
         <GraduationCapIcon
           size={24}
@@ -46,6 +48,7 @@ const Education = ({ darkMode }: EducationProps) => {
       ),
     },
   ]
+
   const certificationData = [
     {
       title: 'Professional Certificate in Web Development',
@@ -70,9 +73,10 @@ const Education = ({ darkMode }: EducationProps) => {
       ),
     },
   ]
+
   const extraCurricularData = [
     {
-      title: 'Member | Club of Informatics Institute of Technology',
+      title: 'Member | Leo Club of Informatics Institute of Technology',
       duration: '2024 - Present',
       icon: (
         <ClipboardCheckIcon
@@ -114,9 +118,11 @@ const Education = ({ darkMode }: EducationProps) => {
       ),
     },
   ]
+
   return (
-    <section id="education" className="py-20 w-full relative">
-      <div className="container mx-auto px-4">
+    <section id="education" className="py-16 w-full relative">
+      <div className="container mx-auto px-6 max-w-6xl">
+        {/* Header Section */}
         <div className="mb-12 text-center">
           <motion.div
             initial={{
@@ -135,7 +141,7 @@ const Education = ({ darkMode }: EducationProps) => {
             }}
           >
             <h2
-              className={`text-3xl md:text-4xl font-bold mb-2 ${darkMode ? '' : 'text-gray-800'}`}
+              className={`text-3xl md:text-4xl font-bold mb-3 ${darkMode ? '' : 'text-gray-800'}`}
             >
               <span className={darkMode ? 'text-blue-400' : 'text-blue-600'}>
                 Education &
@@ -143,41 +149,149 @@ const Education = ({ darkMode }: EducationProps) => {
               Certifications
             </h2>
             <div
-              className={`h-1 w-20 ${darkMode ? 'bg-blue-400' : 'bg-blue-600'} mx-auto rounded-full`}
+              className={`h-1 w-20 ${darkMode ? 'bg-blue-400' : 'bg-blue-600'} mx-auto rounded-full mb-6`}
             ></div>
           </motion.div>
         </div>
-        <div className="mb-8 text-center">
+
+        <div className="mb-12 text-center max-w-2xl mx-auto">
           <AnimatedText
             text="My academic journey and professional qualifications that have shaped my knowledge and skills."
-            className={darkMode ? 'text-gray-300' : 'text-gray-700'}
+            className={`text-base ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}
             once={true}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        {/* Main Content - Vertical Stack */}
+        <div className="max-w-3xl mx-auto space-y-16">
+ 
+          {/* Certifications Subsection */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <AwardIcon
+                size={24}
+                className={darkMode ? 'text-blue-400' : 'text-blue-600'}
+              />
+              <h3
+                className={`text-xl md:text-2xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
+              >
+                Certifications
+              </h3>
+            </div>
+            
+            <div className="grid gap-6 md:grid-cols-2">
+              {certificationData.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  className={`${darkMode ? 'bg-[#111827]/50 border border-gray-800/50' : 'bg-white/80 shadow-lg border border-gray-200/50'} backdrop-blur-sm p-6 rounded-lg hover:shadow-xl transition-all duration-300`}
+                >
+                  <h4
+                    className={`text-lg font-bold mb-2 ${darkMode ? '' : 'text-gray-800'}`}
+                  >
+                    {item.title}
+                  </h4>
+                  <p className={`text-sm mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {item.issuer}
+                  </p>
+                  <div
+                    className={`flex items-center gap-2 text-xs ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}
+                  >
+                    <CalendarIcon size={14} />
+                    <span>{item.year}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Extra-Curricular Activities Subsection */}
+          <div>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <ClipboardCheckIcon
+                size={24}
+                className={darkMode ? 'text-blue-400' : 'text-blue-600'}
+              />
+              <h3
+                className={`text-xl md:text-2xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
+              >
+                Extra-Curricular Activities
+              </h3>
+            </div>
+            
+            <div className="grid gap-6 md:grid-cols-2">
+              {extraCurricularData.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  className={`${darkMode ? 'bg-[#111827]/50 border border-gray-800/50' : 'bg-white/80 shadow-lg border border-gray-200/50'} backdrop-blur-sm p-6 rounded-lg hover:shadow-xl transition-all duration-300`}
+                >
+                  <h4
+                    className={`text-lg font-bold mb-2 ${darkMode ? '' : 'text-gray-800'}`}
+                  >
+                    {item.title}
+                  </h4>
+                  <p className={`text-sm mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    {item.duration}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+                   {/* Education Subsection */}
+          <div>
+            <div className="flex items-center justify-center gap-3 mb-8">
               <GraduationCapIcon
                 size={24}
                 className={darkMode ? 'text-blue-400' : 'text-blue-600'}
               />
               <h3
-                className={`text-2xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
+                className={`text-xl md:text-2xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
               >
                 Education
               </h3>
             </div>
+            
             <div className="space-y-8">
               {educationData.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{
                     opacity: 0,
-                    x: -20,
+                    y: 20,
                   }}
                   whileInView={{
                     opacity: 1,
-                    x: 0,
+                    y: 0,
                   }}
                   transition={{
                     duration: 0.5,
@@ -189,134 +303,38 @@ const Education = ({ darkMode }: EducationProps) => {
                   className={`relative pl-8 before:content-[''] before:absolute before:left-3 before:top-0 before:w-px before:h-full ${darkMode ? 'before:bg-blue-400/30' : 'before:bg-blue-600/30'}`}
                 >
                   <span
-                    className={`absolute left-0 top-0 w-6 h-6 rounded-full ${darkMode ? 'bg-[#111827]' : 'bg-white'} border-2 ${darkMode ? 'border-blue-400' : 'border-blue-600'} flex items-center justify-center`}
+                    className={`absolute left-0 top-0 w-6 h-6 rounded-full ${darkMode ? 'bg-[#111827]' : 'bg-white'} border-2 ${darkMode ? 'border-blue-400' : 'border-blue-600'} flex items-center justify-center shadow-md`}
                   >
                     <span
                       className={`w-2 h-2 rounded-full ${darkMode ? 'bg-blue-400' : 'bg-blue-600'}`}
                     ></span>
                   </span>
-                  <h4
-                    className={`text-lg font-bold mb-1 ${darkMode ? '' : 'text-gray-800'}`}
-                  >
-                    {item.institution}
-                  </h4>
-                  <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-                    {item.degree}
-                  </p>
-                  <div
-                    className={`flex items-center gap-1 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}
-                  >
-                    <CalendarIcon size={14} />
-                    <span>{item.duration}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <AwardIcon
-                size={24}
-                className={darkMode ? 'text-blue-400' : 'text-blue-600'}
-              />
-              <h3
-                className={`text-2xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
-              >
-                Certifications
-              </h3>
-            </div>
-            <div className="space-y-8 mb-12">
-              {certificationData.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{
-                    opacity: 0,
-                    x: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  className={`${darkMode ? 'bg-[#111827]/50' : 'bg-white/70 shadow-md'} backdrop-blur-sm p-6 rounded-lg`}
-                >
-                  <h4
-                    className={`text-lg font-bold mb-1 ${darkMode ? '' : 'text-gray-800'}`}
-                  >
-                    {item.title}
-                  </h4>
-                  <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-                    {item.issuer}
-                  </p>
-                  <div
-                    className={`flex items-center gap-1 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}
-                  >
-                    <CalendarIcon size={14} />
-                    <span>{item.year}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <ClipboardCheckIcon
-                  size={24}
-                  className={darkMode ? 'text-blue-400' : 'text-blue-600'}
-                />
-                <h3
-                  className={`text-xl font-bold ${darkMode ? '' : 'text-gray-800'}`}
-                >
-                  Extra-Curricular Activities
-                </h3>
-              </div>
-              <div className="space-y-4">
-                {extraCurricularData.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{
-                      opacity: 0,
-                      x: 20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.2 + index * 0.1,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="mt-1">{item.icon}</span>
-                    <div>
-                      <p
-                        className={`text-sm ${darkMode ? '' : 'text-gray-800'}`}
-                      >
-                        {item.title}
-                      </p>
-                      <p
-                        className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}
-                      >
-                        {item.duration}
-                      </p>
+                  
+                  <div className="pb-2">
+                    <h4
+                      className={`text-lg font-bold mb-2 ${darkMode ? '' : 'text-gray-800'}`}
+                    >
+                      {item.institution}
+                    </h4>
+                    <p className={`text-sm mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                      {item.degree}
+                    </p>
+                    <div
+                      className={`flex items-center gap-2 text-xs ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}
+                    >
+                      <CalendarIcon size={14} />
+                      <span>{item.duration}</span>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>
   )
 }
+
 export default Education

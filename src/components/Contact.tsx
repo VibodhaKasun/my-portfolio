@@ -168,7 +168,7 @@ const Contact = ({ darkMode }: ContactProps) => {
                     Email
                   </h4>
                   <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-                    vibodhakasun01@gmail.com
+                    vibodhakasun04@gmail.com
                   </p>
                 </div>
               </div>
